@@ -26,7 +26,6 @@ dependencies {
 	runtimeOnly("org.postgresql:postgresql")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation ("org.junit.jupiter:junit-jupiter-api:5.7.0")
-	testRuntimeOnly ("org.junit.jupiter:junit-jupiter-engine:5.7.0")
 	testImplementation("io.qameta.allure:allure-java-commons:2.13.2")
 	testImplementation("io.qameta.allure:allure-attachments:2.13.2")
 	testImplementation("io.qameta.allure:allure-junit5:2.13.2")
