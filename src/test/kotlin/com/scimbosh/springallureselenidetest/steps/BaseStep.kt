@@ -1,4 +1,4 @@
-package com.scimbosh.springtestseleniumtest.steps
+package com.scimbosh.springallureselenidetest.steps
 
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component

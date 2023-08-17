@@ -1,9 +1,9 @@
-package com.scimbosh.springtestseleniumtest.test.google
+package com.scimbosh.springallureselenidetest.test.google
 
 import com.codeborne.selenide.Configuration
 import com.codeborne.selenide.Selenide
 import com.codeborne.selenide.Selenide.open
-import com.scimbosh.springtestseleniumtest.steps.google.StartPageSteps
+import com.scimbosh.springallureselenidetest.steps.google.StartPageSteps
 import io.qameta.allure.Step
 import org.junit.jupiter.api.AfterEach
 import org.slf4j.LoggerFactory

@@ -1,7 +1,7 @@
-package com.scimbosh.springtestseleniumtest.pages.google
+package com.scimbosh.springallureselenidetest.pages.google
 
 import com.codeborne.selenide.SelenideElement
-import com.scimbosh.springtestseleniumtest.pages.BasePage
+import com.scimbosh.springallureselenidetest.pages.BasePage
 import org.springframework.stereotype.Component
 
 @Component

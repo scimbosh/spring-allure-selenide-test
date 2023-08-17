@@ -1,4 +1,4 @@
-package com.scimbosh.springtestseleniumtest.pages
+package com.scimbosh.springallureselenidetest.pages
 
 import com.codeborne.selenide.Selenide
 import org.openqa.selenium.By

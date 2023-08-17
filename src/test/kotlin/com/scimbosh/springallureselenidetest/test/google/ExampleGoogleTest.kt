@@ -1,4 +1,4 @@
-package com.scimbosh.springtestseleniumtest.test.google
+package com.scimbosh.springallureselenidetest.test.google
 
 import com.codeborne.selenide.Condition
 import com.codeborne.selenide.Selenide
@@ -14,7 +14,6 @@ import org.junit.jupiter.params.provider.ValueSource
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
 class ExampleGoogleTest : BaseTest() {
 
-    fun find(query: String) = Selenide.`$`(query)
 
     @BeforeEach
     @Step("Precondition step")
@@ -55,7 +54,7 @@ class ExampleGoogleTest : BaseTest() {
         })
 
         Allure.step("Find button \"Google Search\" ", Allure.ThrowableRunnable {
-            find("input.gNO89b").shouldBe(Condition.exist)
+            Selenide.`$`("input.gNO89b").shouldBe(Condition.exist)
         })
     }
 
@@ -70,7 +69,7 @@ class ExampleGoogleTest : BaseTest() {
         })
 
         Allure.step("Find button \"Fail test\" ", Allure.ThrowableRunnable {
-            find("input.FAILTEST").shouldBe(Condition.exist)
+            Selenide.`$`("input.FAILTEST").shouldBe(Condition.exist)
         })
     }
 

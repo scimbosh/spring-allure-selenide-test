@@ -1,4 +1,4 @@
-package com.scimbosh.springtestseleniumtest
+package com.scimbosh.springallureselenidetest
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
