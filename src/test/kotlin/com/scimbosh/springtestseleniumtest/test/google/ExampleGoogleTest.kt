@@ -7,10 +7,10 @@ import org.junit.jupiter.api.*
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 
-@Epic(value = "Extended test epic name")
-@Feature(value = "Extended test name")
-@Tags(value = [Tag("extendedTest"), Tag("google")])
-@Story(value = "Extended test story name")
+@Epic(value = "Simple test example epic name")
+@Feature(value = "Simple test example feature name")
+@Story(value = "Simple test example story name")
+@Tags(value = [Tag("Simple test example"), Tag("google")])
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
 class ExampleGoogleTest : BaseTest() {
 
@@ -26,7 +26,7 @@ class ExampleGoogleTest : BaseTest() {
     @Owner(value = "scimbosh")
     @DisplayName("Simple Allure test example")
     @AllureId("1")
-    @Tags(value = [Tag("auto"), Tag("allure")])
+    @Tags(value = [Tag("auto"), Tag("allure"), Tag("positive")])
     fun allureExampleTest() {
         Allure.step("Step 0")
         annotatedStep("Step1")
@@ -48,7 +48,7 @@ class ExampleGoogleTest : BaseTest() {
     @Owner(value = "scimbosh")
     @DisplayName("Simple Selenide successful test example")
     @AllureId("2")
-    @Tags(value = [Tag("auto"), Tag("web"), Tag("selenide"), Tag("positive")])
+    @Tags(value = [Tag("auto"), Tag("allure"), Tag("selenide"), Tag("positive")])
     fun selenideSuccessfulTestExample() {
         Allure.step("Open Google", Allure.ThrowableRunnable {
             Selenide.open("https://www.google.com/")
@@ -63,7 +63,7 @@ class ExampleGoogleTest : BaseTest() {
     @Owner(value = "scimbosh")
     @DisplayName("Simple Selenide unsuccessful test example")
     @AllureId("3")
-    @Tags(value = [Tag("auto"), Tag("web"), Tag("selenide")])
+    @Tags(value = [Tag("auto"), Tag("allure"), Tag("selenide"), Tag("negative")])
     fun selenideUnsuccessfulTestExample() {
         Allure.step("Open Google", Allure.ThrowableRunnable {
             Selenide.open("https://www.google.com/")
@@ -78,7 +78,7 @@ class ExampleGoogleTest : BaseTest() {
     @AllureId("4")
     @Owner(value = "scimbosh")
     @DisplayName("Google search check")
-    @Tags(value = [Tag("auto"), Tag("web"), Tag("selenide"), Tag("positive")])
+    @Tags(value = [Tag("auto"), Tag("allure"), Tag("selenide"), Tag("positive")])
     fun runSearch() {
         val query = "First query"
         startPageSteps.inputQuery(query)
@@ -88,7 +88,7 @@ class ExampleGoogleTest : BaseTest() {
 
     @Owner(value = "scimbosh")
     @AllureId("5")
-    @Tags(value = [Tag("auto"), Tag("web"), Tag("selenide"), Tag("positive"), Tag("parametrized")])
+    @Tags(value = [Tag("auto"), Tag("allure"), Tag("selenide"), Tag("positive"), Tag("parameterized")])
     @ParameterizedTest(name = "Enter different words and check the result")
     @ValueSource(strings = ["First query", "Second query"])
     fun runSearchWithParam(queryString: String) {
