@@ -2,6 +2,7 @@ package com.scimbosh.springallureselenidetest.test.google
 
 import com.codeborne.selenide.Condition
 import com.codeborne.selenide.Selenide
+import com.scimbosh.springallureselenidetest.annotations.Manual
 import io.qameta.allure.*
 import org.junit.jupiter.api.*
 import org.junit.jupiter.params.ParameterizedTest
@@ -10,7 +11,7 @@ import org.junit.jupiter.params.provider.ValueSource
 @Epic(value = "Simple test example epic name")
 @Feature(value = "Simple test example feature name")
 @Story(value = "Simple test example story name")
-@Tags(value = [Tag("Simple test example"), Tag("google")])
+@Tags(value = [Tag("example"), Tag("google")])
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
 class ExampleGoogleTest : BaseTest() {
 
@@ -22,9 +23,9 @@ class ExampleGoogleTest : BaseTest() {
     }
 
     @Test
+    @AllureId("1")
     @Owner(value = "scimbosh")
     @DisplayName("Simple Allure test example")
-    @AllureId("1")
     @Tags(value = [Tag("auto"), Tag("allure"), Tag("positive")])
     fun allureExampleTest() {
         Allure.step("Step 0")
@@ -44,9 +45,9 @@ class ExampleGoogleTest : BaseTest() {
     }
 
     @Test
+    @AllureId("2")
     @Owner(value = "scimbosh")
     @DisplayName("Simple Selenide successful test example")
-    @AllureId("2")
     @Tags(value = [Tag("auto"), Tag("allure"), Tag("selenide"), Tag("positive")])
     fun selenideSuccessfulTestExample() {
         Allure.step("Open Google", Allure.ThrowableRunnable {
@@ -59,9 +60,9 @@ class ExampleGoogleTest : BaseTest() {
     }
 
     @Test
+    @AllureId("3")
     @Owner(value = "scimbosh")
     @DisplayName("Simple Selenide unsuccessful test example")
-    @AllureId("3")
     @Tags(value = [Tag("auto"), Tag("allure"), Tag("selenide"), Tag("negative")])
     fun selenideUnsuccessfulTestExample() {
         Allure.step("Open Google", Allure.ThrowableRunnable {
@@ -85,15 +86,28 @@ class ExampleGoogleTest : BaseTest() {
         Thread.sleep(1000)
     }
 
-    @Owner(value = "scimbosh")
     @AllureId("5")
-    @Tags(value = [Tag("auto"), Tag("allure"), Tag("selenide"), Tag("positive"), Tag("parameterized")])
+    @Owner(value = "scimbosh")
     @ParameterizedTest(name = "Enter different words and check the result")
+    @Tags(value = [Tag("auto"), Tag("allure"), Tag("selenide"), Tag("positive"), Tag("parameterized")])
     @ValueSource(strings = ["First query", "Second query"])
     fun runSearchWithParam(queryString: String) {
         startPageSteps.inputQuery(queryString)
         startPageSteps.checkSearchResultPageIsOpen(queryString)
         Thread.sleep(1000)
+    }
+
+    @Manual
+    @AllureId("6")
+    @Owner(value = "scimbosh")
+    @ValueSource(strings = ["First query", "Second query"])
+    @ParameterizedTest(name = "Simple manual test example with param ")
+    @Tags(value = [Tag("manual"), Tag("allure"), Tag("positive")])
+    fun manualSearchWithParam(queryString: String){
+        Allure.step("Open Google")
+        Allure.step("Enter in the search field $queryString")
+        Allure.step("Press Enter")
+        Allure.step("Check that the search results page for the previously entered query has opened")
     }
 
 }
