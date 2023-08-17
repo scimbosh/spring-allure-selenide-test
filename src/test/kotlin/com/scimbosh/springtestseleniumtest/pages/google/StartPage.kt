@@ -14,10 +14,7 @@ class StartPage: BasePage() {
     }
 
     var queryTextarea: SelenideElement = find(QUERY_TEXTAREA_CSS)
-
     var searchButton: SelenideElement = find(SEARCH_BUTTON_CSS)
-
     var feelingLuckyButton: SelenideElement = find(FEELING_LUCKY_BUTTON_CSS)
-
 
 }

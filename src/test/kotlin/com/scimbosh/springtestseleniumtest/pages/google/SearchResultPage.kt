@@ -14,4 +14,5 @@ class SearchResultPage: BasePage() {
 
     var searchResultsContainerPage: SelenideElement = find(SEARCH_RESULTS_PAGE_CONTAINER_CSS)
     var textInSearchField : SelenideElement = find(TEXT_IN_SEARCH_FIELD_CSS)
+
 }

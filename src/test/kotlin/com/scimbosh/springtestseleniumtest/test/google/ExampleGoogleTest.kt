@@ -12,13 +12,19 @@ import org.junit.jupiter.params.provider.ValueSource
 @Tags(value = [Tag("extendedTest"), Tag("google")])
 @Story(value = "Extended test story name")
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
-class ExampleGoogleTest: BaseTest() {
+class ExampleGoogleTest : BaseTest() {
 
     fun find(query: String) = Selenide.`$`(query)
 
+    @BeforeEach
+    @Step("Precondition step")
+    fun precondition() {
+        println("Run tests")
+    }
+
     @Test
     @Owner(value = "scimbosh")
-    @DisplayName("Example  Allure test")
+    @DisplayName("Simple Allure test example")
     @AllureId("1")
     @Tags(value = [Tag("auto"), Tag("allure")])
     fun allureExampleTest() {
@@ -30,53 +36,51 @@ class ExampleGoogleTest: BaseTest() {
 
     @Step("Parent annotated step with parameter [{parameter}]")
     fun annotatedStep(parameter: String?) {
-        println("execute $parameter")
+        println("Execute $parameter")
     }
 
     @Step("Parent annotated step with parameter [{parameter}]")
     fun annotatedStep2(parameter: String?) {
-        println("execute $parameter")
+        println("Execute $parameter")
     }
 
     @Test
     @Owner(value = "scimbosh")
-    @DisplayName("Selenide successful test example")
+    @DisplayName("Simple Selenide successful test example")
     @AllureId("2")
     @Tags(value = [Tag("auto"), Tag("web"), Tag("selenide"), Tag("positive")])
-    fun selenideSuccessfulTestExample(){
-        Allure.step("Open Google",Allure.ThrowableRunnable {
+    fun selenideSuccessfulTestExample() {
+        Allure.step("Open Google", Allure.ThrowableRunnable {
             Selenide.open("https://www.google.com/")
         })
 
-        Allure.step("Find button \"Google Search\" ",Allure.ThrowableRunnable {
-            find("input.gNO89b")
-                .shouldBe(Condition.exist)
+        Allure.step("Find button \"Google Search\" ", Allure.ThrowableRunnable {
+            find("input.gNO89b").shouldBe(Condition.exist)
         })
     }
 
     @Test
     @Owner(value = "scimbosh")
-    @DisplayName("Selenide unsuccessful test example")
+    @DisplayName("Simple Selenide unsuccessful test example")
     @AllureId("3")
     @Tags(value = [Tag("auto"), Tag("web"), Tag("selenide")])
-    fun selenideUnsuccessfulTestExample(){
-        Allure.step("Open Google",Allure.ThrowableRunnable {
+    fun selenideUnsuccessfulTestExample() {
+        Allure.step("Open Google", Allure.ThrowableRunnable {
             Selenide.open("https://www.google.com/")
         })
 
-        Allure.step("Find button \"Fail test\" ",Allure.ThrowableRunnable {
-            find("input.FAILTEST")
-                .shouldBe(Condition.exist)
+        Allure.step("Find button \"Fail test\" ", Allure.ThrowableRunnable {
+            find("input.FAILTEST").shouldBe(Condition.exist)
         })
     }
 
     @Test
     @AllureId("4")
     @Owner(value = "scimbosh")
-    @DisplayName("Selenide successful test example")
+    @DisplayName("Google search check")
     @Tags(value = [Tag("auto"), Tag("web"), Tag("selenide"), Tag("positive")])
-    fun runSearch(){
-        var query = "First query"
+    fun runSearch() {
+        val query = "First query"
         startPageSteps.inputQuery(query)
         startPageSteps.checkSearchResultPageIsOpen(query)
         Thread.sleep(1000)
@@ -85,16 +89,11 @@ class ExampleGoogleTest: BaseTest() {
     @Owner(value = "scimbosh")
     @AllureId("5")
     @Tags(value = [Tag("auto"), Tag("web"), Tag("selenide"), Tag("positive"), Tag("parametrized")])
-    @ParameterizedTest(name = "Parametrized test example")
+    @ParameterizedTest(name = "Enter different words and check the result")
     @ValueSource(strings = ["First query", "Second query"])
-    fun runSearchParam(queryString: String){
+    fun runSearchWithParam(queryString: String) {
         startPageSteps.inputQuery(queryString)
         Thread.sleep(1000)
-    }
-
-    @BeforeEach
-    fun precondition(){
-        println("test")
     }
 
 }

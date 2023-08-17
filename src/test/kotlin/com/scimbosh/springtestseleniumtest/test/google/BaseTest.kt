@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 
-
 //@SpringBootTest(classes = [SpringTestSeleniumTestApplication::class])
 @SpringBootTest
 class BaseTest {
@@ -25,13 +24,11 @@ class BaseTest {
         openWebSite()
     }
 
-
     @Step("Open web-site {url}")
-    fun openWebSite(url: String = "https://www.google.com/"){
+    fun openWebSite(url: String = "https://www.google.com/") {
         log.info("======INIT=SESSION======")
         open(url)
     }
-
 
     private fun setUpBrowser() {
         log.info("======SETUP======")

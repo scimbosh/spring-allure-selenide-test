@@ -2,11 +2,9 @@ package com.scimbosh.springtestseleniumtest.components
 
 import com.codeborne.selenide.*
 import org.openqa.selenium.*
-import org.springframework.stereotype.Component
 
 //@Component
-class Button(
-){
+class Button{
 
     var queryParam = "input.gNO89b"
 

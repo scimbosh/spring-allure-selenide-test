@@ -29,4 +29,5 @@ class StartPageSteps: BaseStep() {
         searchResultPage.searchResultsContainerPage.shouldBe(exist)
         searchResultPage.textInSearchField.shouldHave(text(queryString))
     }
+
 }
