@@ -93,6 +93,7 @@ class ExampleGoogleTest : BaseTest() {
     @ValueSource(strings = ["First query", "Second query"])
     fun runSearchWithParam(queryString: String) {
         startPageSteps.inputQuery(queryString)
+        startPageSteps.checkSearchResultPageIsOpen(queryString)
         Thread.sleep(1000)
     }
 
