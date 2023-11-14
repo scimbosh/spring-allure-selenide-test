@@ -36,7 +36,9 @@ class BaseTest {
         Configuration.screenshots = true
         Configuration.fastSetValue = true
         Configuration.timeout = 10000
+        Configuration.webdriverLogsEnabled
         Configuration.driverManagerEnabled = true
+        System.setProperty("webdriver.chrome.driver", "./driver/win64.119.0.6045.105/chromedriver.exe");
         //Configuration.browser = ""
         //Configuration.headless = true
     }

@@ -29,7 +29,7 @@ dependencies {
 	testImplementation("io.qameta.allure:allure-attachments:2.13.2")
 	testImplementation("io.qameta.allure:allure-junit5:2.13.2")
 	testImplementation(kotlin("test"))
-	testImplementation("com.codeborne:selenide:5.25.1")
+	testImplementation("com.codeborne:selenide:5.25.1") // 6.17.1
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
