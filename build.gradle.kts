@@ -30,7 +30,7 @@ dependencies {
 	testImplementation("io.qameta.allure:allure-junit5:2.13.2")
 	testImplementation(kotlin("test"))
 	testImplementation("com.codeborne:selenide:7.0.0") // 6.17.1
-	//testImplementation("com.codeborne:selenide-selenoid:7.0.0")
+	testImplementation("com.codeborne:selenide-selenoid:7.0.0")
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
