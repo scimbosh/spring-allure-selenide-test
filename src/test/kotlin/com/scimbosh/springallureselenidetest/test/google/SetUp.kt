@@ -1,41 +1,36 @@
 package com.scimbosh.springallureselenidetest.test.google
 
-import com.codeborne.selenide.Configuration
+import com.scimbosh.springallureselenidetest.DriverFactory
+import com.scimbosh.springallureselenidetest.TestProperties
 import org.junit.jupiter.api.extension.BeforeAllCallback
 import org.junit.jupiter.api.extension.ExtensionContext
-import org.openqa.selenium.chrome.ChromeOptions
 import org.slf4j.LoggerFactory
+import org.springframework.context.annotation.Configuration
+import org.springframework.test.context.junit.jupiter.SpringExtension
 
-internal class SetUp : BeforeAllCallback {
+@Configuration
+open class SetUp : BeforeAllCallback {
+
     val log = LoggerFactory.getLogger(javaClass)!!
 
+    private var driverFactory = DriverFactory()
+
     override fun beforeAll(context: ExtensionContext) {
-        log.info("======SETUP======")
 
-        Configuration.remote = "http://192.168.219.100:4444/wd/hub"
-        Configuration.reportsFolder = "target/surefire-reports"
-        Configuration.downloadsFolder = "target/downloads"
-        val options: MutableMap<String, Boolean> = HashMap()
-        options["enableVNC"] = true
-        options["enableVideo"] = true
-        options["enableLog"] = true
-        val capabilities = ChromeOptions()
-        //capabilities.setBrowserVersion("100.0")
-        Configuration.browserCapabilities = capabilities
-        Configuration.browserCapabilities.setCapability("selenoid:options", options)
+        var props = SpringExtension.getApplicationContext(context)
+            .getBean(TestProperties::class.java)
 
-        //selenide standalone
-//        Configuration.screenshots = true
-//        Configuration.fastSetValue = true
-//        Configuration.timeout = 10000
-//        Configuration.webdriverLogsEnabled
-//        //Configuration.startMaximized = true
-//        //Configuration.driverManagerEnabled = true
-//        System.setProperty("webdriver.chrome.driver", "./driver/win64.119.0.6045.105/chromedriver.exe");
-//        //Configuration.browser = ""
-//        //Configuration.headless = true
+        log.info(
+            """
+            \n
+            ===============OUTPUT==============
+                 init ${props.driver} driver
+            ===============OUTPUT==============
+        """.trimIndent()
+        )
+
+        driverFactory.setEnv(props.driver)
+
     }
-
-
 
 }

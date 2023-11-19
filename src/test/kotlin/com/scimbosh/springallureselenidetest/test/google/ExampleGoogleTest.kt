@@ -3,10 +3,13 @@ package com.scimbosh.springallureselenidetest.test.google
 import com.codeborne.selenide.Condition
 import com.codeborne.selenide.Selenide
 import com.scimbosh.springallureselenidetest.annotations.Manual
+import com.scimbosh.springallureselenidetest.steps.google.StartPageSteps
+import com.scimbosh.springallureselenidetest.test.BaseTest
 import io.qameta.allure.*
 import org.junit.jupiter.api.*
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
+import org.springframework.beans.factory.annotation.Autowired
 
 @Epic(value = "Simple test example epic name")
 @Feature(value = "Simple test example feature name")
@@ -14,6 +17,9 @@ import org.junit.jupiter.params.provider.ValueSource
 @Tags(value = [Tag("example"), Tag("google")])
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
 class ExampleGoogleTest : BaseTest() {
+
+    @Autowired
+    lateinit var startPageSteps: StartPageSteps
 
     @BeforeEach
     @Step("Precondition step")
