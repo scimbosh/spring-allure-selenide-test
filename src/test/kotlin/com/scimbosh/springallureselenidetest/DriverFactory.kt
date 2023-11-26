@@ -4,17 +4,32 @@ import com.codeborne.selenide.Configuration
 import org.openqa.selenium.chrome.ChromeOptions
 import org.slf4j.LoggerFactory
 
-class DriverFactory() {
+class DriverFactory(var props: TestProperties) {
 
     val log = LoggerFactory.getLogger(javaClass)!!
 
-    fun setEnv(env: String){
-        if(env == "docker") {
-            dockerRun()
-        } else localRun()
+    init {
+        log.info(
+            """
+                
+        -----Configuration----
+        driver =  ${props.driver}
+        host address =  ${props.hostAddress}
+        browser =  ${props.browser}
+        -----Configuration----
+        """.trimIndent()
+        )
+        setEnv()
     }
 
+    fun setEnv() {
+        if (props.driver == "docker")  dockerRun()
+        else localRun()
+    }
+
+
     private fun localRun() {
+
         Configuration.screenshots = true
         Configuration.fastSetValue = true
         Configuration.timeout = 10000
@@ -27,7 +42,7 @@ class DriverFactory() {
     }
 
     private fun dockerRun() {
-        Configuration.remote = "http://192.168.219.100:4444/wd/hub"
+        Configuration.remote = props.hostAddress
         Configuration.reportsFolder = "target/surefire-reports"
         Configuration.downloadsFolder = "target/downloads"
         val options: MutableMap<String, Boolean> = HashMap()

@@ -2,7 +2,6 @@ package com.scimbosh.springallureselenidetest.test
 
 import com.codeborne.selenide.Selenide
 import com.codeborne.selenide.Selenide.open
-import com.scimbosh.springallureselenidetest.test.google.SetUp
 import io.qameta.allure.Step
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.extension.ExtendWith

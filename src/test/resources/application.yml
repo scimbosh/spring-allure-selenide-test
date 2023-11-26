@@ -18,7 +18,7 @@ logging:
   level:
     ROOT: DEBUG
 test:
-  driver: "docker222"
-  remote-host: "http://192.168.219.100:4444/wd/hub"
+  driver: "local"
+  ip-address: "http://localhost"
+#  ip-address: "http://192.168.219.100:4444/wd/hub"
   browser: "chrome"
-drivertest: "docker1111"
