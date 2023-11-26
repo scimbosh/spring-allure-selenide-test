@@ -8,14 +8,22 @@ import org.springframework.test.context.TestPropertySource
 
 @Configuration
 @EnableConfigurationProperties
+@TestPropertySource("resources/application.yml")
 //@ConfigurationProperties(prefix = "test", ignoreInvalidFields = true)
 //@PropertySource(
 //    value = ["classpath:src/test/resources/application.yml"],
 //    //ignoreResourceNotFound = true,
 //    encoding = "UTF-8"
 //)
-@TestPropertySource("resources/application.yml")
 class TestProperties {
     @Value("\${test.driver}")
     lateinit var driver: String
+
+
+    @Value("\${test.ip-address}")
+    lateinit var hostAddress: String
+
+
+    @Value("\${test.browser}")
+    lateinit var browser: String
 }

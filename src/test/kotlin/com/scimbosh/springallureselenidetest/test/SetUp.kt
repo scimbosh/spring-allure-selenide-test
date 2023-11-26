@@ -1,4 +1,4 @@
-package com.scimbosh.springallureselenidetest.test.google
+package com.scimbosh.springallureselenidetest.test
 
 import com.scimbosh.springallureselenidetest.DriverFactory
 import com.scimbosh.springallureselenidetest.TestProperties
@@ -8,28 +8,21 @@ import org.slf4j.LoggerFactory
 import org.springframework.context.annotation.Configuration
 import org.springframework.test.context.junit.jupiter.SpringExtension
 
+
 @Configuration
 open class SetUp : BeforeAllCallback {
 
-    val log = LoggerFactory.getLogger(javaClass)!!
+//    @Autowired
+//    lateinit var context: ApplicationContext
 
-    private var driverFactory = DriverFactory()
+    val log = LoggerFactory.getLogger(javaClass)!!
 
     override fun beforeAll(context: ExtensionContext) {
 
         var props = SpringExtension.getApplicationContext(context)
             .getBean(TestProperties::class.java)
 
-        log.info(
-            """
-            \n
-            ===============OUTPUT==============
-                 init ${props.driver} driver
-            ===============OUTPUT==============
-        """.trimIndent()
-        )
-
-        driverFactory.setEnv(props.driver)
+        var driverFactory = DriverFactory(props)
 
     }
 
